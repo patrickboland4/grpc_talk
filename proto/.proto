@@ -1,0 +1,38 @@
+syntax = "proto3";
+package grpcTalk;
+
+service ProfileService {
+    // Create a profile
+    rpc CreateUserProfile (CreateUserProfileRequest) returns (CreateUserProfileResponse);
+    // Get the mentee or mentor details 
+    rpc GetUserProfile (GetUserProfileRequest) returns (GetUserProfileResponse);
+    rpc GetPairProfile (GetPairProfileRequest) returns (GetPairProfileResponse);
+    rpc GetAllProfile
+}
+
+
+message User {
+    // REQUIRED
+    required string firstName = 1;
+    // REQUIRED
+    required string lastName = 2;
+    // REQUIRED
+    required Term term = 3;
+    
+
+message Profile {
+    
+
+
+message CreateUserProfileRequest {
+    required User user = 1;
+    optional Profile profile = 2;
+}
+
+message Term {
+    required string season = 1;
+    required int32 year = 2;
+} 
+
+message GetUserProfileResponse {
+    
