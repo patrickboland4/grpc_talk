@@ -3,7 +3,6 @@
 ## gRPC
 #### and
 ## Protocol Buffers
-(with a demonstration using Python)
 
 ---
 
