@@ -1,8 +1,8 @@
-# Better Services with gRPC and Protocol Buffers
+## better services with gRPC and Protocol Buffers
 
 ---
 
-### Where I am coming from
+### where I am coming from
 
 [//]: <> (this is a comment, insert image of bladerunner)
 
@@ -13,3 +13,12 @@
 ---
 
 ![Flux Explained](https://facebook.github.io/flux/img/flux-simple-f8-diagram-explained-1300w.png)
+
+---
+
+### where we are headed
+
+- context
+- why, how, what of the subject
+- demo
+- q & a
