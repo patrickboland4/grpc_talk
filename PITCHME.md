@@ -1,4 +1,4 @@
-![Image](images/grpc.jpg&opacity=40)
+---?image=assets/images/grpc.jpg
 
 ## better services
 #### with 
