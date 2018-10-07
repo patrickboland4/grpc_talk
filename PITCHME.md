@@ -4,7 +4,7 @@
 
 ### Where I am coming from
 
-<> (this is a comment, insert image of bladerunner)
+[//]: <> (this is a comment, insert image of bladerunner)
 
 - Dispatcher: Manages Data Flow
 - Stores: Handle State & Logic
