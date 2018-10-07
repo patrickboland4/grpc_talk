@@ -1,3 +1,5 @@
+---?image=./images/grpc.jpg&opacity=40
+
 ## better services
 #### with 
 ## gRPC
