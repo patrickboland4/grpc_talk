@@ -1,4 +1,6 @@
-## better services with gRPC and Protocol Buffers
+## better services with gRPC
+#### and
+## Protocol Buffers
 
 ---
 
