@@ -1,4 +1,4 @@
----?image=./images/grpc.jpg
+---?image=assets/images/grpc.jpg&size=auto
 
 ## better services
 #### with 
