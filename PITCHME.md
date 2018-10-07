@@ -1,10 +1,10 @@
-# Flux 
-
-An application architecture for React
+# Better Services with gRPC and Protocol Buffers
 
 ---
 
-### Flux Design
+### Where I am coming from
+
+<> (this is a comment, insert image of bladerunner)
 
 - Dispatcher: Manages Data Flow
 - Stores: Handle State & Logic
