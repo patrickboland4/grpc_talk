@@ -1,4 +1,4 @@
----?image=images/grpc.jpg
+---?image=./images/grpc.jpg
 
 ## better services
 #### with 
