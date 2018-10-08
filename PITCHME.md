@@ -75,7 +75,7 @@ this will be achieved
 ---
 
 ### what
-will actually make this work
+@size[.8em](will actually make this work)
 
 - gRPC 
     - Google Remote Procedure Call
@@ -86,11 +86,16 @@ will actually make this work
 
 ### how gRPC works
 
-- a **service defition** describes the api
+- a **service definition** describes the api
 - client and server code is generated from **service definition** in **10+ languages**
 - messages encoded into **protocol buffers**
-- make a unary or streaming connection
-- use / federate a service
+- make a connection
+- federate the service
+
+Note:
+- grpc is so great
+- i just love it
+
 
 ---
 
@@ -101,3 +106,19 @@ binary format serialization
 bidirectional streaming
 protocol buffers vs JSON
 machine readable api contracts
+
+---
+
+### okay so gRPC does what?
+
+gRPC answers these questions in 10+ languages
+
+1. how does a client call a service on a remote machine?
+2. how does one expose a service on a remote machine?
+3. how is data serialized / deserialized over the wire?
+4. what is the nature of the call?
+5. authentication?
+
+--- 
+
+### 'nuff talk. show some code
