@@ -33,6 +33,11 @@ what is an @size[3em](rpc) anyway?
     - program requests a service in another computer as if it is local
     - abstracts concerns
 
+Note:
+
+- Dont need to understand network details
+- abstracts connection details
+
 ---
 
 ### rpcs are a mechanism by which computers communicate
@@ -59,6 +64,9 @@ this will be achieved
 ---
 
 ### what
+
+---
+
 # REST
 
 ---
@@ -71,6 +79,16 @@ this will be achieved
 ### so why not REST? 
 - REST has a lot going for it
 - building client apis is unsustainable (lanugage support)
+
+---
+
+### how (revisited)
+this will be achieved
+
+- simple, performant communication protocol
+- machine readable api contracts
+- multiple language support @size[.5em](code generators)
+- easy to use
 
 ---
 
@@ -92,10 +110,15 @@ this will be achieved
 - make a connection
 - federate the service
 
-Note:
-- grpc is so great
-- i just love it
+---
 
+### gRPC on the wire
+
+- HTTP/2
+- protocol buffer serialization
+- clients open a connection to a grpc server
+- new HTTP/2 stream for each RPC call
+- allows client-side and server-side streaming
 
 ---
 
@@ -122,3 +145,20 @@ gRPC answers these questions in 10+ languages
 --- 
 
 ### 'nuff talk. show some code
+
+---
+
+### gRPC shortcomings
+
+- need to adapt to gRPC style, generated code
+
+---
+
+### takeaways
+
+- machine readable api contracts are awesome
+
+### grpc is
+- efficient and idiomatic
+- performant and scalable
+- micro-service oriented
