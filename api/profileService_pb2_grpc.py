@@ -19,10 +19,20 @@ class ProfileServiceStub(object):
         request_serializer=profileService__pb2.CreateUserProfileRequest.SerializeToString,
         response_deserializer=profileService__pb2.CreateUserProfileResponse.FromString,
         )
+    self.CreateUserProfiles = channel.stream_stream(
+        '/grpcTalk.ProfileService/CreateUserProfiles',
+        request_serializer=profileService__pb2.CreateUserProfilesRequest.SerializeToString,
+        response_deserializer=profileService__pb2.CreateUserProfilesResponse.FromString,
+        )
     self.GetUserProfile = channel.unary_unary(
         '/grpcTalk.ProfileService/GetUserProfile',
         request_serializer=profileService__pb2.GetUserProfileRequest.SerializeToString,
         response_deserializer=profileService__pb2.GetUserProfileResponse.FromString,
+        )
+    self.GetAllProfiles = channel.unary_stream(
+        '/grpcTalk.ProfileService/GetAllProfiles',
+        request_serializer=profileService__pb2.GetAllProfilesRequest.SerializeToString,
+        response_deserializer=profileService__pb2.GetAllProfilesResponse.FromString,
         )
 
 
@@ -31,14 +41,28 @@ class ProfileServiceServicer(object):
   pass
 
   def CreateUserProfile(self, request, context):
-    """Create a profile
+    """Create a profile = client unary, server streaming
+    """
+    context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+    context.set_details('Method not implemented!')
+    raise NotImplementedError('Method not implemented!')
+
+  def CreateUserProfiles(self, request_iterator, context):
+    """Create many profiles = bidirectional stream
     """
     context.set_code(grpc.StatusCode.UNIMPLEMENTED)
     context.set_details('Method not implemented!')
     raise NotImplementedError('Method not implemented!')
 
   def GetUserProfile(self, request, context):
-    """Get the mentee or mentor details 
+    """Get the mentee or mentor details = client unary, server unary
+    """
+    context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+    context.set_details('Method not implemented!')
+    raise NotImplementedError('Method not implemented!')
+
+  def GetAllProfiles(self, request, context):
+    """Get all profiles = client unary, server streaming
     """
     context.set_code(grpc.StatusCode.UNIMPLEMENTED)
     context.set_details('Method not implemented!')
@@ -52,10 +76,20 @@ def add_ProfileServiceServicer_to_server(servicer, server):
           request_deserializer=profileService__pb2.CreateUserProfileRequest.FromString,
           response_serializer=profileService__pb2.CreateUserProfileResponse.SerializeToString,
       ),
+      'CreateUserProfiles': grpc.stream_stream_rpc_method_handler(
+          servicer.CreateUserProfiles,
+          request_deserializer=profileService__pb2.CreateUserProfilesRequest.FromString,
+          response_serializer=profileService__pb2.CreateUserProfilesResponse.SerializeToString,
+      ),
       'GetUserProfile': grpc.unary_unary_rpc_method_handler(
           servicer.GetUserProfile,
           request_deserializer=profileService__pb2.GetUserProfileRequest.FromString,
           response_serializer=profileService__pb2.GetUserProfileResponse.SerializeToString,
+      ),
+      'GetAllProfiles': grpc.unary_stream_rpc_method_handler(
+          servicer.GetAllProfiles,
+          request_deserializer=profileService__pb2.GetAllProfilesRequest.FromString,
+          response_serializer=profileService__pb2.GetAllProfilesResponse.SerializeToString,
       ),
   }
   generic_handler = grpc.method_handlers_generic_handler(

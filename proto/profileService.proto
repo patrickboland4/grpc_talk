@@ -3,10 +3,18 @@ syntax = "proto3";
 package grpcTalk;
 
 service ProfileService {
-    // Create a profile
+
+    // Create a profile = client unary, server streaming
     rpc CreateUserProfile (CreateUserProfileRequest) returns (CreateUserProfileResponse);
-    // Get the mentee or mentor details 
+
+    // Create many profiles = bidirectional stream
+    rpc CreateUserProfiles (stream CreateUserProfilesRequest) returns (stream CreateUserProfilesResponse);
+
+    // Get the mentee or mentor details = client unary, server unary
     rpc GetUserProfile (GetUserProfileRequest) returns (GetUserProfileResponse);
+
+    // Get all profiles = client unary, server streaming
+    rpc GetAllProfiles (GetAllProfilesRequest) returns (stream GetAllProfilesResponse);
 }
 
 
@@ -37,9 +45,17 @@ message CreateUserProfileRequest {
     Profile profile = 2;
 }
 
-
 message CreateUserProfileResponse {
     string status = 1;
+}
+
+
+message CreateUserProfilesRequest {
+    repeated CreateUserProfileRequest user_profiles = 1;
+}
+
+message CreateUserProfilesResponse {
+    repeated CreateUserProfileResponse statuses = 1;
 }
 
 
@@ -47,8 +63,17 @@ message GetUserProfileRequest {
     User user = 1;
 }
 
-
 message GetUserProfileResponse {
     User user = 1;
     Profile profile = 2;
 }
+
+
+message GetAllProfilesRequest {
+    int32 numProfiles = 1;
+}
+
+message GetAllProfilesResponse {
+    repeated GetUserProfileResponse profiles = 1;
+}
+

@@ -31,7 +31,7 @@ class ArangoHelper():
         self.collection = self.db.collection('user_profiles')
 
 
-    def mutate(self, property_dict):
+    def create_user_profile(self, property_dict):
         first = property_dict.get('first')
         last = property_dict.get('last')
         term = property_dict.get('term')
@@ -47,7 +47,7 @@ class ArangoHelper():
             return "Failed"
 
 
-    def query(self, key):
+    def get_user_profile(self, key):
         return self.collection.get(key)
         
 
@@ -66,13 +66,15 @@ def run():
 
     helper = ArangoHelper()
 
-    helper.mutate({'first': 'jane', 'last': 'doe', 'term': 'Fall2018', 
+    helper.create_user_profile({'first': 'jane', 
+        'last': 'doe', 'term': 'Fall2018', 
         'profile': 'I love python'})
-    helper.mutate({'first': 'john', 'last': 'smith', 'term': 'Fall2018',
+    helper.create_user_profile({'first': 'john', 
+        'last': 'smith', 'term': 'Fall2018',
         'profile': 'python is the greatest'})
     
-    print(helper.query('janedoeFall2018'))
-    print(helper.query('johnsmithFall2018'))
+    print(helper.get_user_profile('janedoeFall2018'))
+    print(helper.get_user_profile('johnsmithFall2018'))
 
     print(helper.get_all_profiles())
 

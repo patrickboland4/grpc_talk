@@ -1,10 +1,12 @@
 from concurrent import futures
+import pdb
 import time
 
 import grpc
 
-from . import profileService_pb2 as ps
-from . import profileService_pb2_grpc as ps_grpc
+import profileService_pb2 as ps
+import profileService_pb2_grpc as ps_grpc
+import arango_helpers
 
 
 _ONE_DAY_IN_SECONDS = 60 * 60 * 24
@@ -12,11 +14,49 @@ _ONE_DAY_IN_SECONDS = 60 * 60 * 24
 
 class ProfileServicer(ps_grpc.ProfileServiceServicer):
 
-    def CreateUser(self, request, context):
-        # do stuff
-        response = ps.CreateUserProfileResponse(
-                status = "OK"
+    def __init__(self):
+        self.arango_client = arango_helpers.ArangoHelper()
+
+    def CreateUserProfile(self, request, context):
+        first = request.user.firstName
+        last = request.user.lastName
+        season = request.user.term.season
+        year = request.user.term.year
+        profile = request.profile.profile
+
+        profile_map = dict(
+                first=first, last=last, term="{}{}".format(season, year),
+                profile=profile
         )
+
+        try:
+            self.arango_client.create_user_profile(profile_map)
+            response = ps.CreateUserProfileResponse(
+                    status = "Profile Created"
+            )
+        except:
+            response = ps.CreateUserProfileResponse(
+                    status = "Failed to create profile"
+            )
+
+        return response
+
+
+    def CreateUserProfiles(self, request, context):
+        #items = list(iter([request.user_profiles]))
+        #for item in iter([request]):
+        pdb.set_trace()
+        for item in request.user_profiles:
+            pdb.set_trace()
+
+        #for item in request:
+        #    pdb.set_trace()
+        #for item in request.user_profiles:
+        #    print(item)
+        #pdb.set_trace()
+        print('hi')
+    
+        
 
 
 def serve():
