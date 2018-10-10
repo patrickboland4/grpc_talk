@@ -66,7 +66,6 @@ Note:
 ### what
 
 ---?image=assets/images/chair.jpg&size=cover&opacity=30
-@transition[zoom-in fade-out]
 # REST
 
 ---
@@ -106,10 +105,9 @@ Note:
 
 ---
 
-### what
-#### will actually make this work
-
 # gRPC
+
+#### will actually make this work
 
 ---
 
@@ -180,11 +178,13 @@ gRPC = protocol buffers + HTTP2 | REST = JSON + HTTP1
 
 - machine readable api contracts are awesome
 - implement server code once, many client apis for free
+- flexible, composable, generic
+- ideal for microservice architecture
 
 --- 
 
 ## soap box
-- embrace great services, allow others to also embrace them
+- embrace great services, allow others to also embrace them @color[pink](without concern)
 - don't corner your service into a language
 - flexible, reusable, generic wins
 
