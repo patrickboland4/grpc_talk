@@ -40,43 +40,10 @@ class ProfileServiceClient():
         
         return response
 
-    
-    def create_user_profiles(self, first_last_profile_tuple_list):
-        create_user_profiles_request = ps.CreateUserProfilesRequest(
-                user_profiles = [ps.CreateUserProfileRequest(
-                    user=ps.User(firstName=item[0][0], lastName=item[0][1],
-                        term=ps.Term(season=SEASON, year=YEAR)),
-                    profile=ps.Profile(profile=item[1]))
-                    for item in first_last_profile_tuple_list
-                ]
-        )
-
-        responses = self.stub.CreateUserProfiles(create_user_profiles_request)
-
-        responses = [response for response in responses]
-
-        return responses
-
-
-
-        
-
-
 
 if __name__ == '__main__':
     client = ProfileServiceClient()
 
-    #first, last = fake_help.generate_names(1).pop()
-    #profile = fake_help.make_profile()
-
-    #print(client.create_user_profile(first, last, profile))
-
-    num = 2
-    name_list = fake_help.generate_names(num)
-    profile_list = [fake_help.make_profile() for _ in range(num)]
-    name_profile_list = list(zip(name_list, profile_list))
-    print(client.create_user_profiles(name_profile_list))
-
-
-
-
+    first, last = fake_help.generate_names(1).pop()
+    profile = fake_help.make_profile()
+    print(client.create_user_profile(first, last, profile))

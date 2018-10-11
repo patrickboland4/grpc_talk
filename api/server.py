@@ -42,28 +42,12 @@ class ProfileServicer(ps_grpc.ProfileServiceServicer):
         return response
 
 
-    def CreateUserProfiles(self, request, context):
-        #items = list(iter([request.user_profiles]))
-        #for item in iter([request]):
-        pdb.set_trace()
-        for item in request.user_profiles:
-            pdb.set_trace()
-
-        #for item in request:
-        #    pdb.set_trace()
-        #for item in request.user_profiles:
-        #    print(item)
-        #pdb.set_trace()
-        print('hi')
-    
-        
-
-
 def serve():
     server = grpc.server(futures.ThreadPoolExecutor(max_workers=10))
     ps_grpc.add_ProfileServiceServicer_to_server(ProfileServicer(), server)
     server.add_insecure_port('[::]:50051')
     server.start()
+
     try:
         while True:
             time.sleep(_ONE_DAY_IN_SECONDS)

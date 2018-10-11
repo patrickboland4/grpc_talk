@@ -10,19 +10,16 @@
 
 ## this talk is about how computers communicate
 
----?image=assets/images/bladerunner.jpg&size=cover&opacity=70
-@transition[fade-in fade-out]
+---?image=assets/images/bladerunner.jpg&size=100%&opacity=70
 ## where i am coming from
 - data platform / engineering team @ BoA
 - high performance, federated microservices
 
 [//]: <> (this is a comment, insert image of bladerunner)
 
----?image=assets/images/harrisonFord1.jpg&size=cover&opacity=70
-@transition[fade-out]
+---?image=assets/images/harrisonFord1.jpg&size=100%&opacity=70
 ### where we are headed
 
-- context
 - why, how, what of the subject
 - demo
 - q & a
@@ -40,7 +37,23 @@ Note:
 
 ---
 
+## stub = @color[pink](native client library)
+#### allows client and server to communicate transparently
+
+---
+
 ## rpcs are a mechanism by which computers communicate
+
+---
+
+## microservices
+#### @color[gold](architectural paradigm)
+@ul
+- independent service evolution
+- narrow service scope, built as needed
+- optimized for change and reuse
+- generic
+@ulend
 
 ---
 
@@ -65,7 +78,7 @@ Note:
 
 ### what
 
----?image=assets/images/chair.jpg&size=cover&opacity=30
+---?image=assets/images/chair.jpg&size=100%&opacity=30
 # REST
 
 ---
@@ -84,7 +97,7 @@ Note:
 - Keep client concerns narrow
 @ulend
 
----?image=assets/images/shrek.jpg&size=cover&opacity=40
+---?image=assets/images/backFuture.jpg&size=100%&opacity=40
 ### really, though. 
 @ul[squares]
 - writing client apis requires humans (expensive, grumpy)
@@ -105,13 +118,14 @@ Note:
 
 ---
 
-# gRPC
+# @color[#42cbf4](gRPC)
 
 #### will actually make this work
 
 ---
 
-# gRPC
+# @color[#42cbf4](gRPC)
+
 
 - Google Remote Procedure Call
 - open source, universal, high performance rpc framework
@@ -119,7 +133,7 @@ Note:
 
 ---
 
-### how gRPC works
+### how @color[#42cbf4](gRPC) works
 
 @ul[squares]
 - a **service definition** describes the api
@@ -130,6 +144,18 @@ Note:
 @ulend
 
 ---?image=assets/images/grpcDesign.svg
+
+---
+
+## @color[gold](protocol buffers)
+@ul
+- message format & IDL
+- small, fast, unambiguous (strongly typed)
+- language neutral, platform neutral
+- extensible mechanism for serializing structured data
+- write once, generate source code
+@ulend
+
 
 ---
 
@@ -151,6 +177,18 @@ bidirectional streaming | unary
 machine readable api contracts | no formal contract
 code generators for 10+ languages | build client api per language
 gRPC = protocol buffers + HTTP2 | REST = JSON + HTTP1
+
+---
+
+## pb vs other forms of marshalling
+@ul
+- pickle
+    - python specific, no schema evolution
+- string / json
+    - encoding decoding runtime costs, heavy
+- xml
+    - complicated, inefficient, unreadable
+@ulend
 
 ---
 
